@@ -66,7 +66,7 @@ Each image is color with 32 x 32 x 3 pixels.
 
 
 
-## Beyond Raw Pixel Based Similarity: Is Analogy based Learning Effective?
+## Beyond Raw Pixel Based Similarity: Is Analogy based Learning Effective for Image Classification?
 
 The distance metric does not provide a reliable measure, when applied at the pixel level, to determine semantic identity of an image. It doesn't mean that the distance based technique or analogy based reasoning in general is flawed/weak. The similarity based approach is effective when more expressive and powerful high-level features are extracted from raw pixels. In other words, while distance measures at the raw pixel level produce spurious results, similarity calculation on the high-level features reveal semantic identity.
 
