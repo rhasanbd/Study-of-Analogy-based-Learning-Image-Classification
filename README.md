@@ -1,13 +1,13 @@
 # Study of Analogy based Learning - Image Classification
 
 
-In this notebook, we investigate the following question:
+In this notebook series, we investigate the following question:
 
-- Do the distance-based metrics (e.g., Minkowski) provide a reliable measure of similarity between the images of the same class and different classes? 
+- Do the distance-based metrics (e.g., Minkowski, Mahalanobis) provide a reliable measure of similarity between the images of the same class and different classes? 
 
-The **analogy based** learning models such as K-Nearest Neighbors (K-NN) use distance similarity metric to classify images. Image pixels are considered as features. Two images are "similar" (share the same semantic identity or class label) if their pixel-wise Minkowski distance is small. Using the **Euclidean distance** metric as a measure of similarity, we compare the intra-class and inter-class distances. We show that:
+The **analogy based** learning models such as K-Nearest Neighbors (K-NN) use distance similarity metric to classify images. Typically, image raw pixel values are considered as features. Two images are "similar" (share the same semantic identity or class label) if their pixel-wise Minkowski distance is small. Our goal is to investigate whether this is always true. If not, then why and if there is an effective way to use distance metric to determine semantic similarity. We use the **Euclidean distance** metric as a measure of similarity for comparing the intra-class and inter-class distances. We show that:
 
-- The distance-based metrics (e.g., Minkowski) are not effective, when applied at pixel level, for determining similarity between the images. The inter-class distance is not necessarily and always larger/different from the intra-class distance. It depends on the dataset.
+- The distance-based metrics (e.g., Minkowski) are not effective, when applied at the raw pixel level, for determining similarity between the images. The inter-class distance is not necessarily and always larger/different from the intra-class distance. It depends on the dataset.
 
 
 
@@ -21,10 +21,12 @@ Our similarity analysis study is performed via three tasks.
 
 - Task 3: Visual Similarity Analysis by Projecting the Images on a 2D Space
 
+These three tasks are implemented in the three notebooks of this repository.
+
 
 ## Dataset
 
-For this analysis, we use two popular Machine Learning (ML) image datasets: MNIST handwritten digits & CIFAR-10.
+We use two popular Machine Learning (ML) image datasets: MNIST handwritten digits & CIFAR-10.
 
 - While the images of the MNIST dataset are "normalized" (centered and similar background), the images of the CIFAR-10 dataset has a lot of variations.
 
@@ -45,24 +47,22 @@ Each image is color with 32 x 32 x 3 pixels.
 ## Summary of Observations
 
 
-- In the MNIST dataset, there exists a global pattern in the pixel distribution of the same digit across all images of its category. The MNIST data is relatively clean. Digits are preprocessed by normalizing the size and centered in a fixed-size image. On the other hand, we observe a lot of variatiosn in the CIFAR-10 images of the same object. 
+- In the MNIST dataset, there exists a global pattern in the pixel distribution of the same digit across all images of its category. Also all images share the same background. The MNIST data is relatively clean. Digits are preprocessed by normalizing the size and centered in a fixed-size image. On the other hand, we observe a lot of variatiosn in the CIFAR-10 images of the same object. 
 
 - The background pixels in the MNIST images follow a silimar pattern in all images belonging to the same class. However, in CIFAR-10 images, there are a lot of variations in the background pixels across the images of the same object.
 
 - In the MNIST dataset, the intra-class distance is generally smaller than the inter-class distance. However, this is not true in the CIFAR-10 dataset.
 
 
-
-
 - In MNIST, the pixel-level similarity is good enough to determine the semantic identity of the images. This is due to the fact that MNIST images have a strong bias. This bias is manifested as follows.
 
-        -- Images are centered
+        -- Images are normalized to have the same size and are centered
 
         -- Less variation in the distribution of the pixels of the same class
 
         -- Share the same background
 
-- However, the CIFAR-10 images don't have this bias. As a consequence, pixel level analogy does not lend useful to determine the semantic idetity.
+- However, the CIFAR-10 images don't have this bias. As a consequence, pixel level analogy does not lend useful to determine the semantic idetity of the CIFAR-10 images.
 
 
 
